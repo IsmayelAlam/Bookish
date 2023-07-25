@@ -9,7 +9,8 @@ export default function Header() {
         <Logo />
       </Link>
       <div className="flex justify-between items-center font-semibold space-x-4 text-white uppercase text-md">
-        <NavLink to="/subjects">subjects</NavLink>
+        <NavLink to="/about">about</NavLink>
+        <NavLink to="/subject">subjects</NavLink>
         <NavLink to="/bookmark">TBR</NavLink>
         <ToggleMode />
       </div>
