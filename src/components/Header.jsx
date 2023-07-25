@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
-import Logo from "./Logo";
-import ToggleMode from "./ModeToggle";
+import Logo from "../ui/Logo";
+import ToggleMode from "../ui/ModeToggle";
 
 export default function Header() {
   return (
