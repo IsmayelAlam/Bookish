@@ -4,7 +4,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import Header from "./components/Header";
 import Homepage from "./pages/Homepage";
-import SearchBar from "./components/SearchBar";
 import Subject from "./pages/Subject";
 import Bookmark from "./pages/Bookmark";
 import About from "./pages/About";
