@@ -27,16 +27,14 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <Header />
-      <SearchBar />
       <Routes>
         <Route index element={<Homepage />} />
         <Route path="subject" element={<Subject />} />
         <Route path="bookmark" element={<Bookmark />} />
         <Route path="about" element={<About />} />
-        <Route path="search" element={<Search />}>
-          <Route path="author/id" element={<Author />} />
-          <Route path="book/id" element={<Book />} />
-        </Route>
+        <Route path="search" element={<Search />} />
+        <Route path="author/:id" element={<Author />} />
+        <Route path="book/:id" element={<Book />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </QueryClientProvider>
