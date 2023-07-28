@@ -16,7 +16,7 @@ export default function SearchBar() {
   return (
     <>
       <form
-        className="w-full mx-auto my-2 px-10 flex gap-2 items-center justify-between rounded-full bg-slate-500 font-semibold"
+        className="w-full mx-auto my-5 mb-10 px-10 flex gap-2 items-center justify-between rounded-full bg-slate-500 font-semibold"
         onSubmit={handleSubmit}
       >
         <select

@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
-import useSearchApi from "../hooks/useSearchApi";
+import useSearchApi from "../hooks/useSearch";
 import BookList from "../components/BookList";
 
 export default function Search() {
