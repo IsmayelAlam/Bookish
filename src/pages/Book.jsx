@@ -1,16 +1,18 @@
 import { useParams } from "react-router-dom";
+import useGetBook from "../hooks/useGetBook";
 
 export default function Book() {
   const { id } = useParams();
 
   // const imgs = useGetCover(id, "S");
+  const bookData = useGetBook(id);
+  console.log(bookData);
 
-  const imgs = `https://covers.openlibrary.org/b/olid/${id}-M.jpg`;
+  const cover = `https://covers.openlibrary.org/b/olid/${id}-L.jpg`;
 
-  console.log(id, imgs);
   return (
     <div>
-      <img src={`https://covers.openlibrary.org/b/olid/${id}-M.jpg`} alt="" />
+      <img src={cover} alt="" />
     </div>
   );
 }

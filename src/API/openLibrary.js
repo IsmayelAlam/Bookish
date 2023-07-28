@@ -12,12 +12,10 @@ export async function searchApi(title, author = false, page = 1) {
   return res;
 }
 
-export async function getCoverApi(id, size, type) {
+export async function getBook(id) {
   if (!id) return;
 
-  const data = await fetch(
-    `https://openlibrary.org/covers/olid/${id}-${size}.jpg`
-  );
+  const data = await fetch(`https://openlibrary.org/books/${id}`);
 
   const res = await data.json();
 
