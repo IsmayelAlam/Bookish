@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getBookE, getBookW } from "../API/openLibrary";
 
-export default function useGetBookEdition(id) {
+export function useGetBookEdition(id) {
   const { data, isLoading, error } = useQuery({
     queryKey: ["book", id],
     queryFn: () => getBookE(id),

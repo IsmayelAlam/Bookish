@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
-import useGetBook, { useGetBookWork } from "../hooks/useGetBook";
+import { useGetBookEdition, useGetBookWork } from "../hooks/useGetBook";
 
 export default function Book() {
   const { id } = useParams();
 
   const [work, edition] = id.split("_");
 
-  const bookData = useGetBook(edition);
+  const bookData = useGetBookEdition(edition);
 
   const bookWorkData = useGetBookWork(work);
 
