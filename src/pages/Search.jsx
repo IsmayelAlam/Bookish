@@ -16,12 +16,12 @@ export default function Search() {
     error,
   } = useSearchApi(title || author, Boolean(author), page);
 
-  if (isLoading) return <p>loading</p>;
+  // const filteredBooks = books.filter((book) => book.cover_i);
 
   return (
-    <div className="w-10/12 mx-auto">
+    <div className="px-40 space-y-10 bg-yellow-100">
       <SearchBar />
-      <BookList books={books} />
+      {isLoading ? <p>loading</p> : <BookList books={books} />}
     </div>
   );
 }

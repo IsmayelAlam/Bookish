@@ -4,18 +4,24 @@ import useGetBook, { useGetBookWork } from "../hooks/useGetBook";
 export default function Book() {
   const { id } = useParams();
 
-  // const bookData = useGetBook(id);
+  const [work, edition] = id.split("_");
 
-  // const bookWorkData = useGetBookWork(bookData?.data?.works[0].key);
+  const bookData = useGetBook(edition);
 
-  // console.log(bookWorkData);
-  // console.log(`https://openlibrary.org${bookData?.data?.works[0].key}.json`);
+  const bookWorkData = useGetBookWork(work);
 
-  const cover = `https://covers.openlibrary.org/b/isbn/${id}-L.jpg`;
+  const allData = { ...bookData.data, ...bookWorkData.data };
+
+  const description = allData?.description?.value || allData?.description;
+
+  console.log(allData);
+
+  const cover = `https://covers.openlibrary.org/b/id/${allData?.covers?.[0]}-L.jpg`;
 
   return (
     <div>
-      <img src={cover} alt="" />
+      <img src={cover} alt="" className="h-96" />
+      <p>{description}</p>
     </div>
   );
 }

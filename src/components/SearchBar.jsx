@@ -16,7 +16,7 @@ export default function SearchBar() {
   return (
     <>
       <form
-        className="w-full mx-auto my-5 mb-10 px-10 flex gap-2 items-center justify-between rounded-full bg-slate-500 font-semibold"
+        className="w-full mx-auto px-10 flex gap-2 items-center justify-between font-semibold"
         onSubmit={handleSubmit}
       >
         <select
@@ -28,7 +28,7 @@ export default function SearchBar() {
           <option value="author">author</option>
         </select>
         <input
-          className="bg-transparent h-10 border-b-2 border-blue-300 valid:border-green-300 focus:outline-none w-max grow font-normal"
+          className="bg-transparent h-10 border-b-2 border-yellow-600 valid:border-green-300 focus:outline-none w-max grow font-normal"
           required
           placeholder="Search for you favorite books and authors..."
           onChange={(e) => setInput(e.target.value)}

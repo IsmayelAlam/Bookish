@@ -2,7 +2,7 @@ import SearchBar from "../components/SearchBar";
 
 export default function Homepage() {
   return (
-    <div className="w-10/12 mx-auto">
+    <div className="px-40 h-screen bg-yellow-100">
       <SearchBar />
     </div>
   );
