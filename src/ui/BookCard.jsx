@@ -18,9 +18,14 @@ export default function BookCard({ book }) {
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
     : cover;
 
+  console.log(book.isbn?.find((num) => num.length === 10));
+  const link = `/book/${book?.key.split("/")?.[2]}_${
+    book?.edition_key[0]
+  }_${book.isbn?.find((num) => num.length === 10)}`;
+
   return (
     <li>
-      <Link to={`/book/${book?.key.split("/")?.[2]}_${book?.edition_key[0]}`}>
+      <Link to={link}>
         <div className="w-full h-96 flex items-center justify-start">
           <img
             src={coverImg}
