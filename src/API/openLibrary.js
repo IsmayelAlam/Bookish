@@ -31,3 +31,36 @@ export async function getBookW(workId) {
 
   return res;
 }
+export async function getBookWorkEdition(workId) {
+  if (!workId) return;
+
+  const data = await fetch(
+    `https://openlibrary.org/works/${workId}/editions.json`
+  );
+
+  const res = await data.json();
+
+  return res;
+}
+export async function getBookRatings(workId) {
+  if (!workId) return;
+
+  const data = await fetch(
+    `https://openlibrary.org/works/${workId}/ratings.json`
+  );
+
+  const res = await data.json();
+
+  return res;
+}
+export async function getBookBookshelves(workId) {
+  if (!workId) return;
+
+  const data = await fetch(
+    `https://openlibrary.org/works/${workId}/bookshelves.json`
+  );
+
+  const res = await data.json();
+
+  return res;
+}

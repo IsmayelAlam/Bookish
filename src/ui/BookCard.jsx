@@ -21,7 +21,9 @@ export default function BookCard({ book }) {
   console.log(book.isbn?.find((num) => num.length === 10));
   const link = `/book/${book?.key.split("/")?.[2]}_${
     book?.edition_key[0]
-  }_${book.isbn?.find((num) => num.length === 10)}`;
+  }_${book.isbn?.find((num) => num.length === 10)}_${
+    book?.lending_identifier_s || ""
+  }`;
 
   return (
     <li>
@@ -63,13 +65,17 @@ export default function BookCard({ book }) {
               />
               <MiniDetailCards
                 icon={
-                  book.ebook_access === "no_ebook" ? (
+                  !book.lending_identifier_s ? (
                     <TbDownloadOff />
                   ) : (
                     <TbDownload />
                   )
                 }
-                text={book.ebook_access?.split("_").join(" ")}
+                text={
+                  book.lending_identifier_s
+                    ? "Free Digital Copy"
+                    : "No Free Copy"
+                }
               />
             </div>
           </div>

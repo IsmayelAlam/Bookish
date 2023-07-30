@@ -5,6 +5,9 @@
 body {
   background-color: rgba(254 249 195);
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 
 a.active {
   border-bottom: 2px solid orange;
