@@ -64,3 +64,13 @@ export async function getBookBookshelves(workId) {
 
   return res;
 }
+
+export async function getAuthors(id) {
+  if (!id) return;
+
+  const data = await fetch(`https://openlibrary.org/authors/${id}.json`);
+
+  const res = await data.json();
+
+  return res;
+}

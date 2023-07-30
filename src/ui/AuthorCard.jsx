@@ -4,6 +4,7 @@ import { MdOutlineSubject } from "react-icons/md";
 
 export default function AuthorCard({ author }) {
   const empty = <span>&mdash;</span>;
+
   return (
     <Link to={`/author/${author.key}`}>
       <div className="bg-white w-full border-orange-500 border-2 rounded-lg overflow-hidden flex flex-col items-center h-96">

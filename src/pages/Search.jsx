@@ -17,9 +17,6 @@ export default function Search() {
     page
   );
 
-  // const filteredBooks = books.filter((book) => book.cover_i);
-  console.log(data);
-
   let content = {};
 
   if (title) content = <BookList books={data} />;

@@ -17,6 +17,7 @@ import {
 } from "../hooks/useGetBook";
 import ButtonLink from "../ui/Button";
 import MiniDetailCards from "../ui/MiniDetailCards";
+import { useGetAuthors } from "../hooks/useGetAuthors";
 
 export default function Book() {
   const { id } = useParams();
@@ -31,7 +32,14 @@ export default function Book() {
 
   const allData = { ...bookData.data, ...bookWorkData.data };
 
-  console.log(allData.authors);
+  const authorId = allData.authors
+    ?.map((author) => author.author?.key)?.[0]
+    ?.split("/")
+    .at(-1);
+
+  const author = useGetAuthors(authorId);
+
+  console.log(author);
 
   const description = allData?.description?.value || allData?.description;
 
@@ -59,15 +67,15 @@ export default function Book() {
       </div>
 
       <div className="flex flex-col items-start gap-16">
-        <div>
+        <div className="space-y-2">
           <h2 className="text-5xl">{allData.title}</h2>
           <div className="flex items-center gap-1 text-lg">
             <AiOutlineStar />
             <p>{bookRating?.data?.summary.average?.toFixed(2)}</p>
             <span className="text-sm">({bookRating?.data?.summary.count})</span>
           </div>
-          <p>{allData.number_of_pages || 0}</p>
-          <p>{allData.publish_date || 0}</p>
+          <p>Page number {allData.number_of_pages || 0}</p>
+          <p>Publish on {allData.publish_date || 0}</p>
           <p>publishers: {allData.publishers || "-"}</p>
         </div>
 
@@ -106,8 +114,16 @@ export default function Book() {
         <p>{description}</p>
       </div>
 
-      <div className="w-full h-full">
-        <h3>author</h3>
+      <div className="w-max h-max flex flex-col items-center px-5">
+        <img
+          src={`https://covers.openlibrary.org/a/olid/${authorId}-M.jpg`}
+          alt={`image of author ${author.data?.name}`}
+          className="rounded-lg"
+        />
+        <h3 className="w-full text-center text-lg font-semibold mt-5">
+          {author.data?.name}
+        </h3>
+        <p>The Author</p>
       </div>
     </div>
   );
