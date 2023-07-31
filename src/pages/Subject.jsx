@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const subjects = {
   Arts: [
@@ -108,11 +109,14 @@ export default function Subject() {
       </ul>
       <ul>
         {subjects[active || "Arts"]?.map((key) => (
-          <li key={key}>
+          <Link
+            key={key}
+            to={{ pathname: "/search", search: `title=${key}&page=1` }}
+          >
             <div className="px-2 py-2 w-64" to={key}>
               {key}
             </div>
-          </li>
+          </Link>
         ))}
       </ul>
     </div>
