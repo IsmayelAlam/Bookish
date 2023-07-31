@@ -16,7 +16,7 @@ export default function SearchBar() {
   return (
     <>
       <form
-        className="w-full mx-auto px-10 flex gap-2 items-center justify-between font-semibold"
+        className="w-full mx-auto px-10 py-5 flex gap-2 items-center justify-between font-semibold"
         onSubmit={handleSubmit}
       >
         <select
@@ -34,7 +34,12 @@ export default function SearchBar() {
           onChange={(e) => setInput(e.target.value)}
           value={input}
         />
-        <button type="submit">Search</button>
+        <button
+          type="submit"
+          className="px-5 py-2 bg-white rounded-full shadow uppercase"
+        >
+          Search
+        </button>
       </form>
     </>
   );

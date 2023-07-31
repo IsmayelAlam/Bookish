@@ -8,10 +8,11 @@ export default function Header() {
       <Link to="/">
         <Logo />
       </Link>
-      <div className="flex justify-between items-center font-semibold space-x-4 text-black uppercase text-md">
-        <NavLink to="/about">about</NavLink>
+      <div className="flex justify-between items-center font-semibold space-x-5 text-black capitalize text-md">
+        <NavLink to="/">home</NavLink>
         <NavLink to="/subject">subjects</NavLink>
-        <NavLink to="/bookmark">TBR</NavLink>
+        <NavLink to="/about">about</NavLink>
+        <NavLink to="/bookmark">TBR (Bookmark)</NavLink>
         <ToggleMode />
       </div>
     </div>

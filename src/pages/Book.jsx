@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+
 import { BiGlobe } from "react-icons/bi";
 import {
   AiOutlineCreditCard,
@@ -8,6 +9,7 @@ import {
 import { BsBookmarks } from "react-icons/bs";
 import { IoLogoAmazon } from "react-icons/io5";
 import { TbBan } from "react-icons/tb";
+
 import {
   useBookBookshelves,
   useBookRatings,
@@ -45,7 +47,7 @@ export default function Book() {
   return (
     <div className="px-40 py-14 grid grid-cols-[1fr,3fr,1fr] min-h-screen gap-5">
       <div className="w-full min-w-max h-full flex items-center flex-col gap-5">
-        <img src={cover} alt="" className="h-96 mb-10 rounded-lg" />
+        <img src={cover} alt="" className="w-64 mb-10 rounded-lg" />
         <ButtonLink
           link={
             iaIdentity &&

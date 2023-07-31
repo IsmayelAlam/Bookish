@@ -12,7 +12,7 @@ export default function AuthorCard({ author }) {
           <img
             src={`https://covers.openlibrary.org/a/olid/${author.key}-M.jpg`}
             alt={`portrait of ${author.name}`}
-            className="h-full mx-auto z-10"
+            className="h-full mx-auto z-10 pt-2"
           />
         </div>
 

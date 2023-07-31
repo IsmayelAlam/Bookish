@@ -23,7 +23,7 @@ export default function Search() {
   if (author) content = <AuthorList authors={data} />;
 
   return (
-    <div className="px-40 space-y-10 bg-yellow-100">
+    <div className="px-40 pb-20 space-y-10 bg-yellow-100">
       <SearchBar />
       {isLoading ? <p>loading</p> : content}
     </div>

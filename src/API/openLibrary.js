@@ -74,3 +74,14 @@ export async function getAuthors(id) {
 
   return res;
 }
+export async function getAuthorWork(id) {
+  if (!id) return;
+
+  const data = await fetch(
+    `https://openlibrary.org/authors/${id}/works.json?limit=1000`
+  );
+
+  const res = await data.json();
+
+  return res;
+}
