@@ -1,8 +1,11 @@
-# React + Vite
+# Bookish
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Get all your favorite books in one place. Read them online or get a paperback copy from Amazon, bookmark you "To be read" and many more awesome features, all in one website.
 
-Currently, two official plugins are available:
+Hi, I'm Ismayel alam and this is my demo project. I love reading books and wanted to create something with my web development skills to others. I did the front end part only and get the data base from OpenLibrary, the best free api for book, with other 30 millions copies in different languages. You can search for authors along with books and get their works details and small introduction.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+OpenLibrary is great but there is some inconsistently in database. So some books don't show all details.
+
+Would love to get some feedback and if you would want to see any new features added, let me know through the form.
+
+Happy reading!

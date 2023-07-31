@@ -13,19 +13,14 @@ export default function Author() {
 
   return (
     <div className="w-10/12 mx-auto my-10 grid grid-cols-[1fr,4fr] gap-10">
-      <div className="space-y-2">
+      <div className="flex flex-col gap-2 items-center">
         <img
           src={`https://covers.openlibrary.org/a/olid/${id}-L.jpg`}
           alt={`image of ${data.name}`}
+          className="max-h-96"
         />
         <h2>{data.name}</h2>
         <p>{data.birth_date}</p>
-        {/* {data?.links?.map((link) => (
-          <a key={link.title} href={link.url} className="block">
-            {link.title}
-          </a>
-        ))} */}
-        <p>bio</p>
         <p>{data?.bio?.value || data?.bio}</p>
       </div>
 
