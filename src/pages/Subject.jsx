@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const subjects = {
   Arts: [
     "Architecture",
@@ -84,14 +86,35 @@ const subjects = {
   ],
 };
 
+const keys = Object.keys(subjects);
+
 export default function Subject() {
+  const [active, setActive] = useState("");
+
   return (
-    <ul className="w-10/12 mx-auto mt-5">
-      {Object.entries(subjects).map(([key, value]) => (
-        <li key={key} className="px-2 py-2 hover:bg-slate-300">
-          {key}
-        </li>
-      ))}
-    </ul>
+    <div className="w-10/12 mx-auto mt-5 flex">
+      <ul>
+        {keys.map((key) => (
+          <li key={key}>
+            <div
+              className="px-2 py-2 w-64 hover:bg-slate-300"
+              to={key}
+              onClick={() => setActive(key)}
+            >
+              {key}
+            </div>
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {subjects[active || "Arts"]?.map((key) => (
+          <li key={key}>
+            <div className="px-2 py-2 w-64" to={key}>
+              {key}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

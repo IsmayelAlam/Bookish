@@ -1,13 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  BsBook,
-  BsCalendarDate,
-  BsDownload,
-  BsPencil,
-  BsPeople,
-} from "react-icons/bs";
-import { BiLogoAmazon } from "react-icons/bi";
-import { FaAmazon, FaGoodreadsG } from "react-icons/fa";
+import { BsBook, BsCalendarDate, BsPencil, BsPeople } from "react-icons/bs";
 import { TbDownload, TbDownloadOff } from "react-icons/tb";
 
 import cover from "../assets/book_cover.jpg";
@@ -20,7 +12,7 @@ export default function BookCard({ book }) {
 
   console.log(book.isbn?.find((num) => num.length === 10));
   const link = `/book/${book?.key.split("/")?.[2]}_${
-    book?.edition_key[0]
+    book?.edition_key?.[0]
   }_${book.isbn?.find((num) => num.length === 10)}_${
     book?.lending_identifier_s || ""
   }`;

@@ -21,7 +21,6 @@ import { useGetAuthors } from "../hooks/useGetAuthors";
 
 export default function Book() {
   const { id } = useParams();
-
   const [work, edition, isbn10, iaIdentity] = id.split("_");
 
   const bookData = useGetBookEdition(edition);
@@ -39,8 +38,6 @@ export default function Book() {
 
   const author = useGetAuthors(authorId);
 
-  console.log(author);
-
   const description = allData?.description?.value || allData?.description;
 
   const cover = `https://covers.openlibrary.org/b/id/${allData?.covers?.[0]}-L.jpg`;
@@ -50,7 +47,10 @@ export default function Book() {
       <div className="w-full min-w-max h-full flex items-center flex-col gap-5">
         <img src={cover} alt="" className="h-96 mb-10 rounded-lg" />
         <ButtonLink
-          link={iaIdentity && `https://archive.org/details/${iaIdentity}`}
+          link={
+            iaIdentity &&
+            `https://archive.org/details/${iaIdentity}/?view=theater`
+          }
           icon={iaIdentity ? <BiGlobe /> : <TbBan />}
           text={iaIdentity ? "read online" : "no online copy available"}
         />
