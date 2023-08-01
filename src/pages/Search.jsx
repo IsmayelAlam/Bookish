@@ -19,8 +19,10 @@ export default function Search() {
 
   let content = {};
 
-  if (title) content = <BookList books={data} />;
-  if (author) content = <AuthorList authors={data} />;
+  console.log(data);
+
+  if (title) content = <BookList books={data?.docs} />;
+  if (author) content = <AuthorList authors={data.docs} />;
 
   return (
     <div className="px-40 pb-20 space-y-10 bg-yellow-100">

@@ -20,6 +20,7 @@ import {
 import ButtonLink from "../ui/Button";
 import MiniDetailCards from "../ui/MiniDetailCards";
 import { useGetAuthors } from "../hooks/useGetAuthors";
+import useBookmark from "../hooks/useBookmark";
 
 export default function Book() {
   const { id } = useParams();
@@ -30,6 +31,8 @@ export default function Book() {
   const bookWorkEdition = useBookWorkEdition(work);
   const bookshelves = useBookBookshelves(work);
   const bookRating = useBookRatings(work);
+
+  const [books, setBooks] = useBookmark([], "books");
 
   const allData = { ...bookData.data, ...bookWorkData.data };
 
@@ -46,9 +49,22 @@ export default function Book() {
 
   function handleBookmark(e) {
     e.preventDefault();
+
+    const bookmark = {
+      id,
+      title: allData.title,
+      author_name: [author.data.name],
+      first_publish_year: allData.publish_date,
+      number_of_pages_median: allData.number_of_pages,
+      want_to_read_count: bookshelves.data.counts.want_to_read,
+      lending_identifier_s: iaIdentity,
+      cover_i: allData.covers[0],
+    };
+
+    setBooks((books) => [...books, bookmark]);
   }
 
-  console.log(allData, author.data);
+  console.log(allData, author);
 
   return (
     <div className="px-40 py-14 grid grid-cols-[1fr,3fr,1fr] min-h-screen gap-5">
@@ -61,6 +77,7 @@ export default function Book() {
           }
           icon={iaIdentity ? <BiGlobe /> : <TbBan />}
           text={iaIdentity ? "read online" : "no online copy available"}
+          onClick={!iaIdentity ? (e) => e.preventDefault() : null}
         />
         <ButtonLink
           link={`https://www.amazon.com/gp/product/${isbn10}`}
@@ -71,6 +88,7 @@ export default function Book() {
           link={`/bookmark`}
           icon={<BsBookmarks />}
           text={"bookmark"}
+          onClick={handleBookmark}
         />
       </div>
 
@@ -105,7 +123,6 @@ export default function Book() {
           <MiniDetailCards
             text={`${bookWorkEdition?.data?.entries.length || 0} editions`}
             icon={<AiOutlineCreditCard />}
-            onClick={handleBookmark}
           />
         </div>
 

@@ -10,11 +10,13 @@ export default function BookCard({ book }) {
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
     : cover;
 
-  const link = `/book/${book?.key.split("/")?.[2]}_${
-    book?.edition_key?.[0]
-  }_${book.isbn?.find((num) => num.length === 10)}_${
-    book?.lending_identifier_s || ""
-  }`;
+  let link = book.id
+    ? `/book/${book.id}`
+    : `/book/${book?.key.split("/")?.[2]}_${
+        book?.edition_key?.[0]
+      }_${book.isbn?.find((num) => num.length === 10)}_${
+        book?.lending_identifier_s || ""
+      }`;
 
   console.log(book);
 
