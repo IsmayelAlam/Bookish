@@ -10,5 +10,10 @@ body::-webkit-scrollbar {
 }
 
 a.active {
-  border-bottom: 2px solid orange;
+  /* border-bottom: 2px solid orange; */
+  background: #000;
+  color: aliceblue;
+  padding: 0.25rem 1rem;
+  border-radius: 5rem;
+  text-transform: uppercase;
 }

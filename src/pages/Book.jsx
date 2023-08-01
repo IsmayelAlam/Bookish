@@ -44,6 +44,12 @@ export default function Book() {
 
   const cover = `https://covers.openlibrary.org/b/id/${allData?.covers?.[0]}-L.jpg`;
 
+  function handleBookmark(e) {
+    e.preventDefault();
+  }
+
+  console.log(allData, author.data);
+
   return (
     <div className="px-40 py-14 grid grid-cols-[1fr,3fr,1fr] min-h-screen gap-5">
       <div className="w-full min-w-max h-full flex items-center flex-col gap-5">
@@ -99,6 +105,7 @@ export default function Book() {
           <MiniDetailCards
             text={`${bookWorkEdition?.data?.entries.length || 0} editions`}
             icon={<AiOutlineCreditCard />}
+            onClick={handleBookmark}
           />
         </div>
 

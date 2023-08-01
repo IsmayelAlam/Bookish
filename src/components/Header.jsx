@@ -4,11 +4,11 @@ import ToggleMode from "../ui/ModeToggle";
 
 export default function Header() {
   return (
-    <div className="flex w-full bg-yellow-100 justify-between items-center py-2 px-40">
+    <div className="flex mx-auto w-10/12 my-5 px-10 py-2 rounded-full shadow-lg justify-between items-center bg-white">
       <Link to="/">
         <Logo />
       </Link>
-      <div className="flex justify-between items-center font-semibold space-x-5 text-black capitalize text-md">
+      <div className="flex justify-between items-center font-semibold gap-7 text-black capitalize text-md">
         <NavLink to="/">home</NavLink>
         <NavLink to="/subject">subjects</NavLink>
         <NavLink to="/about">about</NavLink>
