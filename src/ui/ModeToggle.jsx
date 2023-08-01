@@ -1,15 +1,13 @@
-import { useState } from "react";
 import { HiMoon, HiSun } from "react-icons/hi2";
-
-const isDark = window.matchMedia("(prefers-color-scheme: dark)");
+import { useDarkMode } from "../context/DarkModeContext";
 
 export default function ToggleMode() {
-  const [darkMode, setDarkMode] = useState(!isDark);
+  const { toggleDarkMode, darkMode } = useDarkMode();
 
   return (
     <div
       className=" h-7 w-14 bg-orange-500 rounded-full flex justify-between items-center p-1 relative"
-      onClick={setDarkMode.bind(null, !darkMode)}
+      onClick={toggleDarkMode}
     >
       <HiSun className="h-6 w-6 text-yellow-300" />
       <HiMoon className="h-5 w-5 text-gray-300" />
