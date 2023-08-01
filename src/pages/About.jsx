@@ -1,7 +1,7 @@
 export default function About() {
   return (
-    <div className="w-10/12 mx-auto mt-2 grid grid-cols-2 gap-5">
-      <div className="p-5 space-y-5">
+    <div className="w-10/12 mx-auto mt-2 grid grid-cols-2 gap-20">
+      <div className="p-5 space-y-5 w-5/6">
         <h2 className="text-2xl my-10 font-semibold">About</h2>
         <p className="first-letter:text-xl">
           Get all your favorite books in one place. Read them online or get a
@@ -25,6 +25,59 @@ export default function About() {
           features added, let me know through the form.
         </p>
         <p>Happy reading!</p>
+      </div>
+      <div>
+        <h3 className="text-2xl my-10 font-semibold">Form</h3>
+        <form
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          className="flex flex-col items-start gap-4"
+        >
+          <input
+            type="hidden"
+            name="access_key"
+            value={import.meta.env.VITE_EmailAccessKey}
+          />
+
+          <label htmlFor="name">
+            <p>Name</p>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your name"
+              required
+            />
+          </label>
+
+          <label htmlFor="email">
+            <p>Email</p>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+          </label>
+
+          <label htmlFor="message">
+            <p>Message</p>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Enter your message here..."
+            ></textarea>
+          </label>
+
+          <input
+            type="hidden"
+            name="redirect"
+            value="https://web3forms.com/success"
+          />
+
+          <button type="submit">submit</button>
+        </form>
       </div>
     </div>
   );

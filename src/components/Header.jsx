@@ -4,7 +4,7 @@ import ToggleMode from "../ui/ModeToggle";
 
 export default function Header() {
   return (
-    <div className="flex mx-auto w-10/12 my-5 px-10 py-2 rounded-full shadow-lg justify-between items-center bg-white">
+    <div className="flex mx-auto w-10/12 my-5 px-10 py-2 rounded-full shadow-md justify-between items-center bg-white">
       <Link to="/">
         <Logo />
       </Link>

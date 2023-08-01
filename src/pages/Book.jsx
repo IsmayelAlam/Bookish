@@ -32,7 +32,7 @@ export default function Book() {
   const bookshelves = useBookBookshelves(work);
   const bookRating = useBookRatings(work);
 
-  const [books, setBooks] = useBookmark([], "books");
+  const [_, setBookmarks] = useBookmark([], "books");
 
   const allData = { ...bookData.data, ...bookWorkData.data };
 
@@ -61,7 +61,7 @@ export default function Book() {
       cover_i: allData.covers[0],
     };
 
-    setBooks((books) => [...books, bookmark]);
+    setBookmarks((books) => [...books, bookmark]);
   }
 
   console.log(allData, author);
