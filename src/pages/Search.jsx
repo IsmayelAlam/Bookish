@@ -21,7 +21,10 @@ export default function Search() {
 
   console.log(data);
 
-  if (title) content = <BookList books={data?.docs} />;
+  if (title)
+    content = (
+      <BookList books={data?.docs} found={data?.numFound} query={data?.q} />
+    );
   if (author) content = <AuthorList authors={data.docs} />;
 
   return (

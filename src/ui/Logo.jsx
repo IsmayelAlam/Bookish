@@ -1,7 +1,8 @@
+import { useDarkMode } from "../context/DarkModeContext";
+
 import logo_light from "../assets/logo_light.svg";
 import logo_dark from "../assets/logo_dark.svg";
-import logo from "../assets/logo.svg";
-import { useDarkMode } from "../context/DarkModeContext";
+// import logo from "../assets/logo.svg";
 
 export default function Logo() {
   const { darkMode } = useDarkMode();

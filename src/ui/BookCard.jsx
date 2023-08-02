@@ -16,7 +16,7 @@ export default function BookCard({ book }) {
       (num) => num.length === 10
     )}_${book?.lending_identifier_s || ""}`;
 
-  console.log(book);
+  // console.log(book);
 
   return (
     <li>

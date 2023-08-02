@@ -32,7 +32,7 @@ export default function Book() {
   const bookshelves = useBookBookshelves(work);
   const bookRating = useBookRatings(work);
 
-  const [_, setBookmarks] = useBookmark([], "books");
+  const [bookmarks, setBookmarks] = useBookmark([], "books");
 
   const allData = { ...bookData.data, ...bookWorkData.data };
 
@@ -50,6 +50,8 @@ export default function Book() {
   function handleBookmark(e) {
     e.preventDefault();
 
+    if (bookmarks.find((book) => book.id === id)) return;
+
     const bookmark = {
       id,
       title: allData.title,
@@ -64,7 +66,7 @@ export default function Book() {
     setBookmarks((books) => [...books, bookmark]);
   }
 
-  console.log(allData, author);
+  // console.log(allData, author);
 
   return (
     <div className="px-40 py-14 grid grid-cols-[1fr,3fr,1fr] min-h-screen gap-5">
