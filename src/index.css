@@ -2,15 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-:root.light-mode {
-  --bg01: rgba(254 249 195);
-}
-:root.dark-mode {
-  --bg01: rgb(15, 15, 13);
+@layer base {
+  :root.light-mode {
+    --bg01: 247 241 180;
+    --bg02: 15 15 13;
+  }
+  :root.dark-mode {
+    --bg01: 15 15 13;
+    --bg02: 245 240 182;
+  }
 }
 
 body {
-  background-color: var(--bg01);
+  background-color: rgb(var(--bg01));
   height: 100vh;
 }
 body::-webkit-scrollbar {

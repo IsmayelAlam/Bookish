@@ -19,7 +19,7 @@ export default function Search() {
 
   let content = {};
 
-  console.log(data);
+  // console.log(data);
 
   if (title)
     content = (

@@ -17,10 +17,10 @@ import {
   useGetBookEdition,
   useGetBookWork,
 } from "../hooks/useGetBook";
-import ButtonLink from "../ui/Button";
 import MiniDetailCards from "../ui/MiniDetailCards";
 import { useGetAuthors } from "../hooks/useGetAuthors";
 import useBookmark from "../hooks/useBookmark";
+import ButtonLink from "../ui/ButtonLink";
 
 export default function Book() {
   const { id } = useParams();
