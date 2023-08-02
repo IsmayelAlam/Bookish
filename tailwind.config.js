@@ -15,8 +15,8 @@ export default {
 
         grayish01: `rgb(var(--grayish01) / <alpha-value>)`,
 
-        accent01: `rgb(var(--accent01) / <alpha-value>)`,
-        accent02: `rgb(var(--accent02) / <alpha-value>)`,
+        accent01: `rgb(var(--accent01) / <alpha-value>) !important`,
+        accent02: `rgb(var(--accent02) / <alpha-value>) !important`,
       },
     },
   },

@@ -1,16 +1,20 @@
 export default function Form() {
   const inputClass =
-    "bg-bg02 resize-none rounded-full w-96 px-5 py-1 mb-5 border-2 border-border01 focus:border-border02 focus:outline-none text-color01";
+    "bg-bg02 resize-none rounded-full lg:w-96 w-full px-5 py-1 mb-5 border-2 border-border01 focus:border-border02 focus:outline-none text-color01";
 
   return (
     <>
-      <h3 className="text-2xl mb-10 py-7 px-5 font-semibold text-grayish01 bg-accent02 rounded-b-xl shadow">
+      <h3 className="text-2xl mb-10 py-7 px-5 font-semibold text-grayish01 bg-accent02 lg:rounded-b-xl shadow">
         Form
       </h3>
       <form
         action="https://api.web3forms.com/submit"
         method="POST"
-        className="flex flex-col items-center justify-between gap-4 text-color01 w-full h-full"
+        className="flex flex-col items-center justify-between gap-4 text-color01 h-full px-5"
+        onSubmit={(e) => {
+          e.preventDefault();
+          e.target.reset();
+        }}
       >
         <input
           type="hidden"
@@ -18,7 +22,7 @@ export default function Form() {
           value={import.meta.env.VITE_EmailAccessKey}
         />
 
-        <label htmlFor="name" className="space-y-2">
+        <label htmlFor="name" className="space-y-2 w-full">
           <p>Name</p>
           <input
             type="text"
@@ -30,7 +34,7 @@ export default function Form() {
           />
         </label>
 
-        <label htmlFor="email" className="space-y-2">
+        <label htmlFor="email" className="space-y-2 w-full">
           <p>Email</p>
           <input
             type="email"
@@ -42,7 +46,7 @@ export default function Form() {
           />
         </label>
 
-        <label htmlFor="message" className="space-y-2">
+        <label htmlFor="message" className="space-y-2 w-full">
           <p>Message</p>
           <textarea
             id="message"

@@ -2,10 +2,10 @@ import Form from "../components/Form";
 
 export default function About() {
   return (
-    <div className="w-10/12 mx-auto mt-2 grid sm:grid-cols-2 gap-20 rounded-2xl bg-bg02 border-2 border-border01 px-10">
-      <div className="text-grayish01">
+    <div className="w-screen sm:w-10/12 sm:mx-auto sm:mt-2 grid xl:grid-cols-2 sm:gap-20 sm:rounded-2xl bg-bg02 sm:border-2 border-border01 sm:px-10">
+      <div className="text-grayish01 w-fit px-2">
         <h2 className="text-2xl my-10 font-semibold">About</h2>
-        <div className="space-y-2">
+        <div className="space-y-2 text-sm sm:text-base">
           <p className="first-letter:text-xl first-letter:font-bold">
             Get all your favorite books in one place. Read them online or get a
             paperback copy from Amazon, bookmark you &quot;To be read&quot; and
@@ -30,7 +30,7 @@ export default function About() {
           <p>Happy reading!</p>
         </div>
       </div>
-      <div className="h-min w-min mx-auto px-10 pb-20 bg-bg01 rounded-xl shadow-lg my-10">
+      <div className="h-min w-full lg:w-max sm:mx-auto lg:px-10 pb-20 bg-bg01 rounded-xl shadow-lg my-10 overflow-hidden">
         <Form />
       </div>
     </div>
