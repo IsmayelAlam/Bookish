@@ -4,8 +4,6 @@ import logo_light from "../assets/logo_light.svg";
 import logo_dark from "../assets/logo_dark.svg";
 import logo from "../assets/logo.svg";
 
-console.log(window.innerWidth);
-
 export default function Logo({ ...rest }) {
   const { darkMode } = useDarkMode();
 

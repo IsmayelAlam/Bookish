@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --accent01: 248 177 149; /* #f8b195 */
+    --accent02: 168 144 129; /* #a39081 */
+  }
   :root.light-mode {
     --bg01: 255 243 219; /* #fff3db*/
     --bg02: 239 217 180; /*#efd9b4*/
@@ -11,6 +15,9 @@
     --color02: 214 166 146; /*#d6a692*/
 
     --border01: 214 166 146; /*#d6a692*/
+    --border02: 77 97 96; /*#4d6160*/
+
+    --grayish01: 50 50 50;
   }
   :root.dark-mode {
     --bg01: 53 54 52;
@@ -20,6 +27,9 @@
     --color02: 77 97 96; /*#4d6160*/
 
     --border01: 77 97 96; /*#4d6160*/
+    --border02: 214 166 146; /*#d6a692*/
+
+    --grayish01: 200 200 200;
   }
 }
 
@@ -28,17 +38,10 @@ body {
   min-width: 100vw;
   min-height: 100vh;
 }
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
   display: none;
 }
 
 a.active {
   border-bottom: 2px solid rgb(var(--border01));
 }
-
-/* @media (max-width: 640px) {
-  a.active {
-    border-radius: 50%;
-    border: 2px solid rgb(var(--border01));
-  }
-} */

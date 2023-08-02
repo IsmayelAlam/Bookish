@@ -11,6 +11,12 @@ export default {
         color02: `rgb(var(--color02) / <alpha-value>)`,
 
         border01: `rgb(var(--border01) / <alpha-value>)`,
+        border02: `rgb(var(--border02) / <alpha-value>)`,
+
+        grayish01: `rgb(var(--grayish01) / <alpha-value>)`,
+
+        accent01: `rgb(var(--accent01) / <alpha-value>)`,
+        accent02: `rgb(var(--accent02) / <alpha-value>)`,
       },
     },
   },
