@@ -6,14 +6,14 @@ export default function ToggleMode() {
 
   return (
     <div
-      className=" h-7 w-14 bg-orange-500 rounded-full flex justify-between items-center p-1 relative"
+      className=" h-8 w-16 border-2 border-border01 bg-bg01/70 rounded-full text-color01 flex justify-between items-center p-1 relative"
       onClick={toggleDarkMode}
     >
-      <HiSun className="h-6 w-6 text-yellow-300" />
-      <HiMoon className="h-5 w-5 text-gray-300" />
+      <HiSun className="h-6 w-6" />
+      <HiMoon className="h-5 w-5" />
       <div
-        className={`h-6 w-6 absolute bg-slate-100 rounded-full top-1/2 -translate-y-1/2 transition-all duration-200 ${
-          darkMode ? "left-1" : "left-7"
+        className={`h-6 w-6 absolute bg-color02 rounded-full top-1/2 -translate-y-1/2 transition-all duration-200 ${
+          !darkMode ? "left-1" : "left-8"
         }`}
       />
     </div>

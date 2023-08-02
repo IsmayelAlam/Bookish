@@ -4,29 +4,41 @@
 
 @layer base {
   :root.light-mode {
-    --bg01: 247 241 180;
-    --bg02: 15 15 13;
+    --bg01: 255 243 219; /* #fff3db*/
+    --bg02: 239 217 180; /*#efd9b4*/
+
+    --color01: 77 97 96; /*#4d6160*/
+    --color02: 214 166 146; /*#d6a692*/
+
+    --border01: 214 166 146; /*#d6a692*/
   }
   :root.dark-mode {
-    --bg01: 15 15 13;
-    --bg02: 245 240 182;
+    --bg01: 53 54 52;
+    --bg02: 41 37 34; /*#292522*/
+
+    --color01: 214 166 146; /*#d6a692*/
+    --color02: 77 97 96; /*#4d6160*/
+
+    --border01: 77 97 96; /*#4d6160*/
   }
 }
 
 body {
   background-color: rgb(var(--bg01));
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 body::-webkit-scrollbar {
   display: none;
 }
 
 a.active {
-  border-bottom: 2px solid orange;
-  transition: all 150ms linear;
-  /* background: #000; */
-  /* color: aliceblue; */
-  /* padding: 0.25rem 1rem; */
-  /* border-radius: 5rem; */
-  /* text-transform: uppercase; */
+  border-bottom: 2px solid rgb(var(--border01));
 }
+
+/* @media (max-width: 640px) {
+  a.active {
+    border-radius: 50%;
+    border: 2px solid rgb(var(--border01));
+  }
+} */

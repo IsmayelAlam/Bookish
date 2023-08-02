@@ -93,7 +93,7 @@ export default function Subject() {
   const [active, setActive] = useState("");
 
   return (
-    <div className="w-10/12 mx-auto mt-5 flex">
+    <div className=" mt-5 flex">
       <ul>
         {keys.map((key) => (
           <li key={key}>

@@ -6,7 +6,7 @@ export default function Homepage() {
   console.log(quote);
 
   return (
-    <div className="px-40 bg-yellow-100">
+    <div className="px-40 bg-bg01">
       <SearchBar />
       <p>{quote?.[0].quote}</p>
     </div>
