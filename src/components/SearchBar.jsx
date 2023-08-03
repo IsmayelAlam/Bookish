@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineSearch } from "react-icons/ai";
 
 export default function SearchBar() {
   const navigate = useNavigate();
@@ -16,11 +17,11 @@ export default function SearchBar() {
   return (
     <>
       <form
-        className="w-full mx-auto px-10 py-5 flex gap-2 items-center justify-between font-semibold"
+        className="sm:mx-auto sm:px-10 mx-2 px-2 flex rounded-full sm:rounded sm:gap-2 items-center bg-bg02 justify-between font-semibold text-grayish01"
         onSubmit={handleSubmit}
       >
         <select
-          className="w-24 h-10 bg-transparent focus:outline-none uppercase"
+          className="focus:outline-none capitalize bg-transparent"
           value={selection}
           onChange={(e) => setSelection(e.target.value)}
         >
@@ -28,7 +29,7 @@ export default function SearchBar() {
           <option value="author">author</option>
         </select>
         <input
-          className="bg-transparent h-10 border-b-2 border-yellow-600 valid:border-green-300 focus:outline-none w-max grow font-normal"
+          className="bg-transparent h-10 border-b-2 border-border02 valid:border-green-300 focus:outline-none w-max grow font-normal"
           required
           placeholder="Search for you favorite books and authors..."
           onChange={(e) => setInput(e.target.value)}
@@ -36,9 +37,10 @@ export default function SearchBar() {
         />
         <button
           type="submit"
-          className="px-5 py-2 bg-white rounded-full shadow uppercase"
+          className="px-5 py-2 uppercase text-color01 font-semibold"
         >
-          Search
+          <span className="hidden sm:block">Search</span>
+          <AiOutlineSearch className="block sm:hidden h-7 w-7 px-0.5" />
         </button>
       </form>
     </>
