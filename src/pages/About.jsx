@@ -30,7 +30,7 @@ export default function About() {
           <p>Happy reading!</p>
         </div>
       </div>
-      <div className="h-min w-full lg:w-max sm:mx-auto lg:px-10 pb-20 bg-bg01 rounded-xl shadow-lg my-10 overflow-hidden">
+      <div className="h-min w-full lg:w-max sm:mx-auto lg:px-10 pb-20 bg-bg01 sm:rounded-xl shadow-lg my-10 overflow-hidden">
         <Form />
       </div>
     </div>

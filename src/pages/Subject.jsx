@@ -24,7 +24,7 @@ const subjects = {
     "Humor",
     "Literature",
     "Magic",
-    "Mystery and detective stories",
+    "Mystery & detective story",
     "Plays",
     "Poetry",
     "Romance",
@@ -90,15 +90,20 @@ const subjects = {
 const keys = Object.keys(subjects);
 
 export default function Subject() {
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("Arts");
 
   return (
-    <div className=" mt-5 flex">
-      <ul>
+    <div className="sm:w-10/12 sm:mx-auto w-max mt-5 px-2 flex text-grayish01 text-sm sm:text-lg capitalize">
+      <ul className="border-r-2 border-border02">
+        <h2 className="text-xl font-semibold underline">Subjects</h2>
         {keys.map((key) => (
           <li key={key}>
             <div
-              className="px-2 py-2 w-64 hover:bg-slate-300"
+              className={`px-2 py-2 my-2 mx-1 sm:mx-5 sm:w-64 rounded-full cursor-pointer border-2  font-semibold ${
+                active === key
+                  ? "bg-bg02 border-border01"
+                  : "border-transparent"
+              }`}
               to={key}
               onClick={() => setActive(key)}
             >
@@ -107,13 +112,16 @@ export default function Subject() {
           </li>
         ))}
       </ul>
-      <ul>
-        {subjects[active || "Arts"]?.map((key) => (
+      <ul className="space-y-2 sm:mx-5 mx-2 mt-10 sm:w-auto">
+        {subjects[active]?.map((key) => (
           <Link
             key={key}
             to={{ pathname: "/search", search: `title=${key}&page=1` }}
           >
-            <div className="px-2 py-2 w-64" to={key}>
+            <div
+              className="px-2 py-2 sm:w-64 sm:m-2 hover:bg-bg02 sm:border-2 border-transparent rounded-full transition-all duration-100 hover:border-border01"
+              to={key}
+            >
               {key}
             </div>
           </Link>

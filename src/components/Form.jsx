@@ -12,6 +12,7 @@ export default function Form() {
         method="POST"
         className="flex flex-col items-center justify-between gap-4 text-color01 h-full px-5"
         onSubmit={(e) => {
+          e.target.submit();
           e.preventDefault();
           e.target.reset();
         }}

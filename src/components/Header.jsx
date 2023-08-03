@@ -2,7 +2,6 @@ import { Link, NavLink } from "react-router-dom";
 import {
   MdInfoOutline,
   MdOutlineBookmarks,
-  MdOutlineHome,
   MdOutlineSubject,
 } from "react-icons/md";
 
@@ -15,9 +14,8 @@ export default function Header() {
       <Link to="/">
         <Logo />
       </Link>
-      <div className="flex justify-evenly items-center font-semibold text-color01 capitalize text-md sm:gap-7 sm:w-fit w-full">
+      <div className="flex justify-between items-center font-semibold text-color01 capitalize text-md sm:gap-7 sm:w-fit w-full">
         <NavLink to="/">
-          <MdOutlineHome className="block sm:hidden h-7 w-7 px-0.5" />
           <span className="hidden sm:block">home</span>
         </NavLink>
         <NavLink to="/subject">
