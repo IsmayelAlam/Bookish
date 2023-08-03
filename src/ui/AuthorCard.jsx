@@ -7,7 +7,7 @@ export default function AuthorCard({ author }) {
 
   return (
     <Link to={`/author/${author.key}`}>
-      <div className="bg-white w-full border-orange-500 border-2 rounded-lg overflow-hidden flex flex-col items-center h-96">
+      <div className="bg-white w-64 border-orange-500 border-2 rounded-lg overflow-hidden flex flex-col items-center h-96">
         <div className="h-64 w-full bg-white">
           <img
             src={`https://covers.openlibrary.org/a/olid/${author.key}-M.jpg`}
