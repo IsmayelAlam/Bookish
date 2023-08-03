@@ -8,9 +8,11 @@ import {
 import Logo from "../ui/Logo";
 import ToggleMode from "../ui/ModeToggle";
 
-export default function Header() {
+export default function Header({ styleClass }) {
   return (
-    <div className="flex sm:mx-auto sm:my-5 sm:w-10/12 sm:rounded-full w-full sm:px-10 text-sm sm:text-md sm:border-2 px-5 py-2 justify-between items-center bg-bg02 border-border01 ">
+    <div
+      className={`flex sm:mx-auto sm:my-5 sm:w-10/12 sm:rounded-full w-full sm:px-10 text-sm sm:text-md sm:border-2 px-5 py-2 justify-between items-center bg-bg02 border-border01 ${styleClass}`}
+    >
       <Link to="/">
         <Logo />
       </Link>

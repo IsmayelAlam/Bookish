@@ -25,7 +25,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
-      <Header />
+      <Header styleClass="hidden sm:flex" />
       <Routes>
         <Route index element={<Homepage />} />
         <Route path="subject" element={<Subject />} />
@@ -36,8 +36,10 @@ function App() {
         <Route path="book/:id" element={<Book />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      <Header styleClass="fixed top-full flex sm:hidden z-50 -translate-y-full" />
     </QueryClientProvider>
   );
 }
 
 export default App;
+//

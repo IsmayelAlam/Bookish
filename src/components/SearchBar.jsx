@@ -17,16 +17,20 @@ export default function SearchBar() {
   return (
     <>
       <form
-        className="sm:mx-auto sm:px-10 mx-2 px-2 flex rounded-full sm:rounded sm:gap-2 items-center bg-bg02 justify-between font-semibold text-grayish01"
+        className="sm:mx-auto sm:px-10 mx-2 px-2 flex rounded-full sm:rounded sm:gap-2 items-center bg-bg02 justify-between font-semibold text-lg text-grayish01"
         onSubmit={handleSubmit}
       >
         <select
-          className="focus:outline-none capitalize bg-transparent"
+          className="focus:outline-none capitalize text-color01 bg-transparent rounded-full p-1 m-1 border-none"
           value={selection}
           onChange={(e) => setSelection(e.target.value)}
         >
-          <option value="title">Title</option>
-          <option value="author">author</option>
+          <option value="title" className="bg-bg01 w-fit">
+            Title
+          </option>
+          <option value="author" className="bg-bg01 w-fit">
+            author
+          </option>
         </select>
         <input
           className="bg-transparent h-10 border-b-2 border-border02 valid:border-green-300 focus:outline-none w-max grow font-normal"
@@ -37,7 +41,7 @@ export default function SearchBar() {
         />
         <button
           type="submit"
-          className="px-5 py-2 uppercase text-color01 font-semibold"
+          className="sm:px-5 p-1 uppercase text-color01 bg-bg01 rounded-full m-1"
         >
           <span className="hidden sm:block">Search</span>
           <AiOutlineSearch className="block sm:hidden h-7 w-7 px-0.5" />

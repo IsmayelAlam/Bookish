@@ -17,10 +17,10 @@
     --border01: 214 166 146; /*#d6a692*/
     --border02: 77 97 96; /*#4d6160*/
 
-    --grayish01: 50 50 50;
+    --grayish01: 47 64 55; /* 	#2F4037 */
   }
   :root.dark-mode {
-    --bg01: 53 54 52;
+    --bg01: 53 54 52; /* #343536 */
     --bg02: 41 37 34; /*#292522*/
 
     --color01: 214 166 146; /*#d6a692*/
@@ -29,7 +29,7 @@
     --border01: 77 97 96; /*#4d6160*/
     --border02: 214 166 146; /*#d6a692*/
 
-    --grayish01: 200 200 200;
+    --grayish01: 200 200 200; /* #C8C8C8 */
   }
 }
 
@@ -37,6 +37,7 @@ body {
   background-color: rgb(var(--bg01));
   min-width: 100vw;
   min-height: 100vh;
+  position: relative;
 }
 *::-webkit-scrollbar {
   display: none;

@@ -1,8 +1,8 @@
 import SearchBar from "../components/SearchBar";
-// import useGetQuotes from "../hooks/useGetQuotes";
+import useGetQuotes from "../hooks/useGetQuotes";
 
 export default function Homepage() {
-  // const { data: quote, isLoading } = useGetQuotes();
+  const { data: quote, isLoading } = useGetQuotes();
 
   return (
     <div className="lg:w-10/12 lg:mx-auto bg-bg01">
@@ -10,20 +10,17 @@ export default function Homepage() {
         <SearchBar />
       </div>
 
-      {/* {isLoading || ( */}
-      <div className="py-52 px-2 sm:w-fit text-grayish01 sm:mx-auto space-y-5 z-50">
-        <q className="text-center sm:text-3xl text-xl text-grayish01 italic">
-          The truth is, in order to get things like universal health care and a
-          revamped The truth is, in order to get things like universal health
-          care and a revamped
-          {/* {quote?.[0].quote} */}
-        </q>
-        <p className="text-end">
-          &mdash; Michelle Obama
-          {/* {quote?.[0].author} */}
-        </p>
-      </div>
-      {/* )} */}
+      {isLoading || (
+        <div className="sm:py-52 px-2 sm:w-fit text-grayish01 sm:mx-auto space-y-5 z-50">
+          <q className="text-center sm:text-3xl text-xl text-grayish01 italic">
+            {quote?.[0].quote}
+          </q>
+          <p className="text-end">
+            &mdash;
+            {quote?.[0].author}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
