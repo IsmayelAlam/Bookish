@@ -4,7 +4,6 @@ import { searchApi } from "../API/openLibrary";
 export default function useSearch(title, author, page) {
   const { data, isLoading, error } = useQuery({
     queryKey: ["search", title, author, page],
-    keepPreviousData: true,
     queryFn: () => searchApi(title, author, page),
   });
 

@@ -4,24 +4,23 @@ import { TbDownload, TbDownloadOff } from "react-icons/tb";
 
 import cover from "../assets/book_cover.jpg";
 import MiniDetailCards from "./MiniDetailCards";
+import { namePadding } from "../util/helper";
 
 export default function BookCard({ book }) {
   const coverImg = book.cover_i
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
     : cover;
 
-  let link = `${book.key.split("/")?.[2]}_${
+  let link = `${book.key.split("/")?.at(-1)}_${
     book.edition_key?.[0]
   }_${book.isbn?.find((num) => num.length === 10)}_${
     book?.lending_identifier_s || ""
   }`;
 
-  // console.log(book);
-
   return (
     <li>
       <Link to={`/book/${link}`}>
-        <div className="w-full h-96 flex items-center justify-start text-color01">
+        <div className="w-fit h-96 flex items-center justify-start mx-auto text-color01">
           <img
             src={coverImg}
             alt={`${book.title} book cover`}
@@ -31,14 +30,12 @@ export default function BookCard({ book }) {
           <div className="bg-bg02 border-border02 w-64 border-2 shadow-lg rounded-xl h-full flex justify-between items-center flex-col -ml-14 mx-2 pl-14 py-5 pr-2">
             <header className="pl-2">
               <h3 className="text-lg font-semibold">
-                {book.title.length > 50
-                  ? book.title.slice(0, 50).padEnd(53, ".")
-                  : book.title}
+                {namePadding(book.title, 50)}
               </h3>
               <div className="flex items-center gap-1">
                 <BsPencil />
                 <h4 className="truncate w-40">
-                  {book?.author_name?.[0] || "--"}
+                  {book?.author_name?.[0] || "-"}
                 </h4>
               </div>
             </header>
@@ -46,7 +43,7 @@ export default function BookCard({ book }) {
             <div className="space-y-2 text-sm w-11/12">
               <MiniDetailCards
                 icon={<BsCalendarDate />}
-                text={`Published on ${book.first_publish_year || "--"}`}
+                text={`Published on ${book.first_publish_year || 0}`}
               />
               <MiniDetailCards
                 icon={<BsPeople />}

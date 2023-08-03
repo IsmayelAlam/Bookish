@@ -12,7 +12,7 @@ export default function Homepage() {
 
       {isLoading || (
         <div className="sm:py-52 px-2 sm:w-fit text-grayish01 sm:mx-auto space-y-5 z-50">
-          <q className="text-center sm:text-3xl text-xl text-grayish01 italic">
+          <q className="text-center sm:text-3xl text-xl text-color01 italic">
             {quote?.[0].quote}
           </q>
           <p className="text-end">

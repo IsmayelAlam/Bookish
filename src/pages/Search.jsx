@@ -32,7 +32,11 @@ export default function Search() {
         <SearchBar />
       </div>
       <div className="px-2 w-fit mx-auto">
-        {isLoading ? <LoadingBookCard count={8} /> : content}
+        {isLoading ? (
+          <LoadingBookCard count={8} author={Boolean(author)} />
+        ) : (
+          content
+        )}
       </div>
     </div>
   );
