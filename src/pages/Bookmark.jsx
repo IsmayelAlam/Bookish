@@ -5,7 +5,7 @@ export default function Bookmark() {
   const [books, setBooks] = useBookmark([], "books");
 
   return (
-    <div className="w-10/12 mx-auto">
+    <div className="lg:w-10/12 w-fit pb-10 mx-auto">
       <BookList books={books} />
     </div>
   );

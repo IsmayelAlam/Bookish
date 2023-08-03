@@ -10,25 +10,25 @@ export default function BookCard({ book }) {
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
     : cover;
 
-  let link =
-    book.id ||
-    `${book?.key.split("/")?.[2]}_${book?.edition_key?.[0]}_${book.isbn?.find(
-      (num) => num.length === 10
-    )}_${book?.lending_identifier_s || ""}`;
+  let link = `${book?.key.split("/")?.[2]}_${
+    book?.edition_key?.[0]
+  }_${book.isbn?.find((num) => num.length === 10)}_${
+    book?.lending_identifier_s || ""
+  }`;
 
   // console.log(book);
 
   return (
     <li>
       <Link to={`/book/${link}`}>
-        <div className="w-full h-96 flex items-center justify-start">
+        <div className="w-full h-96 flex items-center justify-start text-color01">
           <img
             src={coverImg}
             alt={`${book.title} book cover`}
-            className="rounded-md z-10 shadow-md w-40 h-2/3"
+            className="rounded-lg z-10 shadow-md w-40"
           />
 
-          <div className="bg-white border-orange-500 border-2 shadow-lg rounded-xl h-full w-full flex justify-between items-center flex-col -ml-14 pl-14 py-5 pr-2">
+          <div className="bg-bg02 border-border02 w-64 border-2 shadow-lg rounded-xl h-full flex justify-between items-center flex-col -ml-14 mx-2 pl-14 py-5 pr-2">
             <header className="pl-2">
               <h3 className="text-lg font-semibold">
                 {book.title.length > 50
@@ -43,14 +43,10 @@ export default function BookCard({ book }) {
               </div>
             </header>
 
-            <div className="space-y-1 text-sm w-11/12">
+            <div className="space-y-2 text-sm w-11/12">
               <MiniDetailCards
                 icon={<BsCalendarDate />}
                 text={`Published on ${book.first_publish_year || "--"}`}
-              />
-              <MiniDetailCards
-                icon={<BsBook />}
-                text={`${book.number_of_pages_median || 0} pages`}
               />
               <MiniDetailCards
                 icon={<BsPeople />}
@@ -69,6 +65,10 @@ export default function BookCard({ book }) {
                     ? "Free Digital Copy"
                     : "No Free Copy"
                 }
+              />
+              <MiniDetailCards
+                icon={<BsBook />}
+                text={`${book.number_of_pages_median || 0} pages`}
               />
             </div>
           </div>

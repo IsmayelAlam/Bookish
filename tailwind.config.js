@@ -17,6 +17,7 @@ export default {
 
         accent01: `rgb(var(--accent01) / <alpha-value>) !important`,
         accent02: `rgb(var(--accent02) / <alpha-value>) !important`,
+        accent03: `rgb(var(--accent03) / <alpha-value>) !important`,
       },
     },
   },

@@ -53,7 +53,6 @@ export default function Book() {
     if (bookmarks.find((book) => book.id === id)) return;
 
     const bookmark = {
-      id,
       title: allData.title,
       author_name: [author.data.name],
       first_publish_year: allData.publish_date,
@@ -61,6 +60,9 @@ export default function Book() {
       want_to_read_count: bookshelves.data.counts.want_to_read,
       lending_identifier_s: iaIdentity,
       cover_i: allData.covers[0],
+      key: `/works/${work}`,
+      isbn: [isbn10],
+      edition_key: [edition],
     };
 
     setBookmarks((books) => [...books, bookmark]);

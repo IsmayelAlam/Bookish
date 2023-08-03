@@ -32,7 +32,7 @@ export default function BookList({ books, found, query }) {
 
   return (
     <>
-      <div className="flex justify-between items-center">
+      {/* <div className="flex justify-between items-center">
         <p>
           found {found} books for {query}
         </p>
@@ -42,8 +42,8 @@ export default function BookList({ books, found, query }) {
           <button onClick={setFreeBooks.bind(null, false)}>all</button>
           <button onClick={setFreeBooks.bind(null, true)}>free</button>
         </div>
-      </div>
-      <ul className="grid grid-cols-1 sm:grid-cols-4 gap-10">
+      </div> */}
+      <ul className="grid grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 py-10">
         {filterBooks?.map((book) => (
           <BookCard key={book.edition_key?.[0]} book={book} />
         ))}
