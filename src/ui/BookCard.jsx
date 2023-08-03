@@ -10,8 +10,8 @@ export default function BookCard({ book }) {
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
     : cover;
 
-  let link = `${book?.key.split("/")?.[2]}_${
-    book?.edition_key?.[0]
+  let link = `${book.key.split("/")?.[2]}_${
+    book.edition_key?.[0]
   }_${book.isbn?.find((num) => num.length === 10)}_${
     book?.lending_identifier_s || ""
   }`;

@@ -28,9 +28,13 @@ export default function Search() {
   if (author) content = <AuthorList authors={data.docs} />;
 
   return (
-    <div className="px-40 pb-20 space-y-10 bg-yellow-100">
-      <SearchBar />
-      {isLoading ? <p>loading</p> : content}
+    <div className="lg:w-10/12 pb-10 w-full mx-auto bg-bg01">
+      <div className="sm:pt-0 pt-10 w-full">
+        <SearchBar />
+      </div>
+      <div className="px-2 w-fit mx-auto">
+        {isLoading ? <p>loading</p> : content}
+      </div>
     </div>
   );
 }

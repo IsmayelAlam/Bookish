@@ -8,7 +8,7 @@ export default function Logo({ ...rest }) {
   const { darkMode } = useDarkMode();
 
   let modeLogo =
-    window.innerWidth < 640 ? logo : darkMode ? logo_dark : logo_light;
+    window.innerWidth < 700 ? logo : darkMode ? logo_dark : logo_light;
 
   return (
     <div {...rest}>

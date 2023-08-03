@@ -59,7 +59,7 @@ export default function Book() {
       number_of_pages_median: allData.number_of_pages,
       want_to_read_count: bookshelves.data.counts.want_to_read,
       lending_identifier_s: iaIdentity,
-      cover_i: allData.covers[0],
+      cover_i: allData.covers?.[0] || null,
       key: `/works/${work}`,
       isbn: [isbn10],
       edition_key: [edition],
