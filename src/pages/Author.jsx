@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useGetAuthorWork, useGetAuthors } from "../hooks/useGetAuthors";
 import avatar from "../assets/avatar.png";
+import LoadingCard from "../ui/LoadingCard";
 
 export default function Author() {
   const { id } = useParams();
@@ -34,7 +35,7 @@ export default function Author() {
 
       {/* <div className="grid gap-y-5 gap-x-10 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 pb-10 text-color01"> */}
       {isLoading ? (
-        ""
+        <LoadingCard author={true} count={8} />
       ) : (
         <div className="flex flex-wrap gap-5 justify-center text-color01 font-semibold">
           {data?.entries?.map((work) => (

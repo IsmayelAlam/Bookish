@@ -1,4 +1,4 @@
-export default function LoadingBookCard({ count, author = false }) {
+export default function LoadingCard({ count, author = false }) {
   return (
     <ul className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 py-10 w-full">
       {[...Array(count).keys()].map((book) => (

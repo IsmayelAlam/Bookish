@@ -21,8 +21,7 @@ export default function BookList({ books, found, query }) {
     if (curPage > 1) setSearchParams({ title, page: curPage - 1 });
   };
 
-  if (freeBook)
-    filterBooks = books?.filter((book) => book.lending_identifier_s);
+  if (freeBook) filterBooks = books.filter((book) => book.lending_identifier_s);
 
   const detailBar = (
     <div className="flex justify-between gap-1 w-full items-center my-5 text-color01 py-1 rounded-lg">
@@ -73,7 +72,7 @@ export default function BookList({ books, found, query }) {
 
   return (
     <>
-      {detailBar}
+      {found && query && detailBar}
       <ul className="grid grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 py-10">
         {filterBooks?.map((book) => (
           <BookCard key={book.edition_key?.[0]} book={book} />
