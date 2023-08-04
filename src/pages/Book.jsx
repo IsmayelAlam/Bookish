@@ -5,7 +5,6 @@ import {
   AiFillStar,
   AiOutlineCreditCard,
   AiOutlineFileDone,
-  AiOutlineStar,
 } from "react-icons/ai";
 import { TbBookmarks, TbBookmarksOff } from "react-icons/tb";
 import { IoLogoAmazon } from "react-icons/io5";
@@ -23,6 +22,8 @@ import { useGetAuthors } from "../hooks/useGetAuthors";
 import useBookmark from "../hooks/useBookmark";
 import ButtonLink from "../ui/ButtonLink";
 import cover from "../assets/book_cover.jpg";
+import avatar from "../assets/avatar.png";
+import LoadingBook from "../ui/LoadingBook";
 
 export default function Book() {
   const { id } = useParams();
@@ -80,6 +81,15 @@ export default function Book() {
     }
   }
 
+  if (
+    bookData.isLoading ||
+    bookWorkData.isLoading ||
+    bookWorkEdition.isLoading ||
+    bookshelves.isLoading ||
+    bookRating.isLoading
+  )
+    return <LoadingBook />;
+
   return (
     <div className="md:w-10/12 py-14 grid grid-cols-1 xl:grid-cols-[1fr,4fr] justify-center lg:gap-5 text-grayish01 mx-auto">
       <div className="w-full px-2 min-w-max h-min flex justify-eve xl:flex-col gap-2 sm:gap-5">
@@ -106,7 +116,7 @@ export default function Book() {
           <ButtonLink
             link={`/bookmark`}
             icon={isBookmarked ? <TbBookmarksOff /> : <TbBookmarks />}
-            text={"bookmark"}
+            text={isBookmarked ? "unBookmark" : "bookmark"}
             onClick={handleBookmark}
           />
         </div>
@@ -117,27 +127,49 @@ export default function Book() {
           <h2 className="lg:text-6xl text-4xl text-color01 font-semibold">
             {allData.title}
           </h2>
-          <div className="flex items-center gap-1 text-lg">
+          <div
+            className={
+              bookRating?.data?.summary.average
+                ? "flex items-center gap-1 text-lg"
+                : "hidden"
+            }
+          >
             <AiFillStar className="w-5 h-5 text-yellow-400" />
             <p>{bookRating?.data?.summary.average?.toFixed(2)}</p>
           </div>
 
           <div className="flex gap-2 py-5">
-            <img
-              src={`https://covers.openlibrary.org/a/olid/${authorId}-S.jpg`}
-              alt={`image of author ${author.data?.name}`}
-              className="rounded-lg"
-            />
+            <div className="w-12 h-16 rounded-lg overflow-hidden relative">
+              <img
+                src={avatar}
+                alt={`portrait of `}
+                className="h-full w-full mx-auto absolute top-0 left-0 z-0"
+              />
+              <img
+                src={`https://covers.openlibrary.org/a/olid/${authorId}-S.jpg`}
+                alt={`image of author ${author.data?.name}`}
+                className="h-full w-full mx-auto absolute top-0 left-0 z-0"
+              />
+            </div>
+
             <div>
               <h3 className="text-center font-semibold">{author.data?.name}</h3>
               <p>Author</p>
             </div>
           </div>
 
-          <p>Page number: {allData.number_of_pages || "-"}</p>
-          <p>Publish on: {allData.publish_date || "-"}</p>
-          <p>publishers: {allData.publishers || "-"}</p>
+          <p className={allData.number_of_pages || "hidden"}>
+            Page number: {allData.number_of_pages}
+          </p>
+          <p className={allData.publish_date || "hidden"}>
+            Publish on: {allData.publish_date}
+          </p>
+          <p className={allData.publishers || "hidden"}>
+            publishers: {allData.publishers}
+          </p>
         </div>
+
+        <hr />
 
         <div className="flex flex-wrap justify-center capitalize gap-4">
           <MiniDetailCards
@@ -179,7 +211,7 @@ export default function Book() {
             ))}
         </div>
 
-        <div className={description ? "space-y-3" : "hidden"}>
+        <div className={description ? "space-y-3 lg:pr-20" : "hidden"}>
           <p className="text-lg">Description:</p>
           <p>{description}</p>
         </div>
