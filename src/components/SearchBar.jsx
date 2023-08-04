@@ -17,7 +17,7 @@ export default function SearchBar() {
   return (
     <>
       <form
-        className="sm:mx-auto sm:px-10 mx-2 px-2 flex rounded-full sm:rounded sm:gap-2 items-center bg-bg02 justify-between font-semibold text-lg text-grayish01"
+        className="mx-auto w-full sm:px-10 px-2 flex rounded-full sm:rounded sm:gap-2 items-center bg-bg02 justify-between font-semibold text-lg text-grayish01"
         onSubmit={handleSubmit}
       >
         <select
@@ -33,7 +33,7 @@ export default function SearchBar() {
           </option>
         </select>
         <input
-          className="bg-transparent h-10 border-b-2 border-border02 valid:border-green-300 focus:outline-none w-max grow font-normal"
+          className="bg-transparent h-10 border-b-2 border-border02 valid:border-green-300 focus:outline-none grow font-normal w-10/12 "
           required
           placeholder="Books and authors..."
           onChange={(e) => setInput(e.target.value)}
