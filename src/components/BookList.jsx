@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 export default function BookList({ books, found, query }) {
   const [freeBook, setFreeBooks] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const curPage = Number(searchParams.get("page"));
+  const curPage = Number(searchParams.get("page")) || 1;
 
   let filterBooks = books;
 

@@ -1,12 +1,13 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { BiGlobe } from "react-icons/bi";
 import {
+  AiFillStar,
   AiOutlineCreditCard,
   AiOutlineFileDone,
   AiOutlineStar,
 } from "react-icons/ai";
-import { BsBookmarks } from "react-icons/bs";
+import { TbBookmarks, TbBookmarksOff } from "react-icons/tb";
 import { IoLogoAmazon } from "react-icons/io5";
 import { TbBan } from "react-icons/tb";
 
@@ -21,6 +22,7 @@ import MiniDetailCards from "../ui/MiniDetailCards";
 import { useGetAuthors } from "../hooks/useGetAuthors";
 import useBookmark from "../hooks/useBookmark";
 import ButtonLink from "../ui/ButtonLink";
+import cover from "../assets/book_cover.jpg";
 
 export default function Book() {
   const { id } = useParams();
@@ -32,11 +34,9 @@ export default function Book() {
   const bookshelves = useBookBookshelves(work);
   const bookRating = useBookRatings(work);
 
-  const [bookmarks, setBookmarks] = useBookmark([], "books");
-
   const allData = { ...bookData.data, ...bookWorkData.data };
 
-  const authorId = allData.authors
+  const authorId = allData?.authors
     ?.map((author) => author.author?.key)?.[0]
     ?.split("/")
     .at(-1);
@@ -45,71 +45,101 @@ export default function Book() {
 
   const description = allData?.description?.value || allData?.description;
 
-  const cover = `https://covers.openlibrary.org/b/id/${allData?.covers?.[0]}-L.jpg`;
+  const bookCover = allData?.covers?.[0]
+    ? `https://covers.openlibrary.org/b/id/${allData?.covers?.[0]}-L.jpg`
+    : cover;
+
+  const [bookmarks, setBookmarks] = useBookmark([], "books");
+
+  const isBookmarked = bookmarks.find(
+    (book) => book.edition_key[0] === edition
+  );
 
   function handleBookmark(e) {
     e.preventDefault();
 
-    if (bookmarks.find((book) => book.id === id)) return;
+    if (bookmarks.find((book) => book.edition_key[0] === edition)) {
+      setBookmarks((books) => [
+        ...books.filter((book) => book.edition_key[0] !== edition),
+      ]);
+    } else {
+      const bookmark = {
+        title: allData.title,
+        author_name: [author.data.name],
+        first_publish_year: allData.publish_date,
+        number_of_pages_median: allData.number_of_pages,
+        want_to_read_count: bookshelves.data.counts.want_to_read,
+        lending_identifier_s: iaIdentity,
+        cover_i: allData.covers?.[0] || null,
+        key: `/works/${work}`,
+        isbn: [isbn10],
+        edition_key: [edition],
+      };
 
-    const bookmark = {
-      title: allData.title,
-      author_name: [author.data.name],
-      first_publish_year: allData.publish_date,
-      number_of_pages_median: allData.number_of_pages,
-      want_to_read_count: bookshelves.data.counts.want_to_read,
-      lending_identifier_s: iaIdentity,
-      cover_i: allData.covers?.[0] || null,
-      key: `/works/${work}`,
-      isbn: [isbn10],
-      edition_key: [edition],
-    };
-
-    setBookmarks((books) => [...books, bookmark]);
+      setBookmarks((books) => [...books, bookmark]);
+    }
   }
 
-  // console.log(allData, author);
-
   return (
-    <div className="px-40 py-14 grid grid-cols-[1fr,3fr,1fr] min-h-screen gap-5">
-      <div className="w-full min-w-max h-full flex items-center flex-col gap-5">
-        <img src={cover} alt="" className="w-64 mb-10 rounded-lg" />
-        <ButtonLink
-          link={
-            iaIdentity &&
-            `https://archive.org/details/${iaIdentity}/?view=theater`
-          }
-          icon={iaIdentity ? <BiGlobe /> : <TbBan />}
-          text={iaIdentity ? "read online" : "no online copy available"}
-          onClick={!iaIdentity ? (e) => e.preventDefault() : null}
+    <div className="md:w-10/12 py-14 grid grid-cols-1 xl:grid-cols-[1fr,4fr] justify-center lg:gap-5 text-grayish01 mx-auto">
+      <div className="w-full px-2 min-w-max h-min flex justify-eve xl:flex-col gap-2 sm:gap-5">
+        <img
+          src={bookCover}
+          alt={`cover of ${allData.title}`}
+          className="w-40 xl:w-64 mb-10 rounded-lg mx-auto"
         />
-        <ButtonLink
-          link={`https://www.amazon.com/gp/product/${isbn10}`}
-          icon={<IoLogoAmazon />}
-          text={"buy paperback"}
-        />
-        <ButtonLink
-          link={`/bookmark`}
-          icon={<BsBookmarks />}
-          text={"bookmark"}
-          onClick={handleBookmark}
-        />
+        <div className="text-center w-44 sm:w-64 space-y-3 text-sm mx-auto">
+          <ButtonLink
+            link={
+              iaIdentity &&
+              `https://archive.org/details/${iaIdentity}/?view=theater`
+            }
+            icon={iaIdentity ? <BiGlobe /> : <TbBan />}
+            text={iaIdentity ? "read online" : "not available"}
+            onClick={!iaIdentity ? (e) => e.preventDefault() : null}
+          />
+          <ButtonLink
+            link={`https://www.amazon.com/gp/product/${isbn10}`}
+            icon={<IoLogoAmazon />}
+            text={"buy paperback"}
+          />
+          <ButtonLink
+            link={`/bookmark`}
+            icon={isBookmarked ? <TbBookmarksOff /> : <TbBookmarks />}
+            text={"bookmark"}
+            onClick={handleBookmark}
+          />
+        </div>
       </div>
 
-      <div className="flex flex-col items-start gap-16">
+      <div className="flex flex-col items-start gap-5 px-2">
         <div className="space-y-2">
-          <h2 className="text-5xl">{allData.title}</h2>
+          <h2 className="lg:text-6xl text-4xl text-color01 font-semibold">
+            {allData.title}
+          </h2>
           <div className="flex items-center gap-1 text-lg">
-            <AiOutlineStar />
+            <AiFillStar className="w-5 h-5 text-yellow-400" />
             <p>{bookRating?.data?.summary.average?.toFixed(2)}</p>
-            <span className="text-sm">({bookRating?.data?.summary.count})</span>
           </div>
-          <p>Page number {allData.number_of_pages || 0}</p>
-          <p>Publish on {allData.publish_date || 0}</p>
+
+          <div className="flex gap-2 py-5">
+            <img
+              src={`https://covers.openlibrary.org/a/olid/${authorId}-S.jpg`}
+              alt={`image of author ${author.data?.name}`}
+              className="rounded-lg"
+            />
+            <div>
+              <h3 className="text-center font-semibold">{author.data?.name}</h3>
+              <p>Author</p>
+            </div>
+          </div>
+
+          <p>Page number: {allData.number_of_pages || "-"}</p>
+          <p>Publish on: {allData.publish_date || "-"}</p>
           <p>publishers: {allData.publishers || "-"}</p>
         </div>
 
-        <div className="flex capitalize gap-4 my-5">
+        <div className="flex flex-wrap justify-center capitalize gap-4">
           <MiniDetailCards
             text={`${bookshelves?.data?.counts.already_read || 0} already read`}
             icon={<AiOutlineFileDone />}
@@ -130,30 +160,29 @@ export default function Book() {
           />
         </div>
 
-        <div className="flex flex-wrap my-5 gap-2">
-          <span>Subjects: </span>
+        <div
+          className={
+            allData.subjects ? "flex flex-wrap items-center gap-2" : "hidden"
+          }
+        >
           {allData.subjects
             ?.filter((subject) => !subject.includes(" "))
             .map((subject) => (
-              <p key={subject} className="bg-white rounded-full py-1 px-2">
-                {subject}
-              </p>
+              <Link
+                key={subject}
+                to={{ pathname: "/search", search: `title=${subject}` }}
+              >
+                <p className="border border-border01 font-semibold rounded-full py-1 px-3">
+                  {subject}
+                </p>
+              </Link>
             ))}
         </div>
 
-        <p>{description}</p>
-      </div>
-
-      <div className="w-max h-max flex flex-col items-center px-5">
-        <img
-          src={`https://covers.openlibrary.org/a/olid/${authorId}-M.jpg`}
-          alt={`image of author ${author.data?.name}`}
-          className="rounded-lg"
-        />
-        <h3 className="w-full text-center text-lg font-semibold mt-5">
-          {author.data?.name}
-        </h3>
-        <p>The Author</p>
+        <div className={description ? "space-y-3" : "hidden"}>
+          <p className="text-lg">Description:</p>
+          <p>{description}</p>
+        </div>
       </div>
     </div>
   );

@@ -35,7 +35,7 @@ export default function SearchBar() {
         <input
           className="bg-transparent h-10 border-b-2 border-border02 valid:border-green-300 focus:outline-none w-max grow font-normal"
           required
-          placeholder="Search for you favorite books and authors..."
+          placeholder="Books and authors..."
           onChange={(e) => setInput(e.target.value)}
           value={input}
         />
