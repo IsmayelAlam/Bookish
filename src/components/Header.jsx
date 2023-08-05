@@ -19,7 +19,7 @@ export default function Header({ styleClass }) {
         </Link>
         <div className="flex justify-between items-center font-semibold text-color01 capitalize text-md sm:gap-7 sm:w-fit w-full">
           <NavLink to="/">
-            <span className="hidden sm:block">home</span>
+            <span className="hidden md:block">home</span>
           </NavLink>
           <NavLink to="/subject">
             <span className="hidden sm:block">subjects</span>

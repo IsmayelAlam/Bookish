@@ -135,7 +135,7 @@ export default function Book() {
             }
           >
             <AiFillStar className="w-5 h-5 text-yellow-400" />
-            <p>{bookRating?.data?.summary.average?.toFixed(2)}</p>
+            <p>{bookRating?.data?.summary.average?.toFixed(2)}/5</p>
           </div>
 
           <div className="flex gap-2 py-5">

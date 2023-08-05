@@ -4,7 +4,7 @@ import { getAuthorWork, getAuthors } from "../API/openLibrary";
 export function useGetAuthors(id) {
   const { data, isLoading, error } = useQuery({
     queryKey: ["author", id],
-    queryFn: () => getAuthors(id),
+    queryFn: () => (id ? getAuthors(id) : null),
   });
 
   return { data, isLoading, error };
