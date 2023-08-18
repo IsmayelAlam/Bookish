@@ -36,7 +36,7 @@ function App() {
         <Route path="book/:id" element={<Book />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      <Header styleClass="fixed top-full flex sm:hidden z-50 -translate-y-full" />
+      <Header styleClass="fixed left-0 right-0 -bottom-12 top-full flex sm:hidden z-50 -translate-y-full" />
     </QueryClientProvider>
   );
 }

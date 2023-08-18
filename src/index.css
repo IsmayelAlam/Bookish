@@ -32,18 +32,18 @@
 
     --grayish01: 240 240 240; /* #F0F0F0  */
   }
-}
 
-body {
-  background-color: rgb(var(--bg01));
-  min-width: 100vw;
-  min-height: 100vh;
-  position: relative;
-}
-*::-webkit-scrollbar {
-  display: none;
-}
+  body {
+    background-color: rgb(var(--bg01));
+    min-width: 100vw;
+    min-height: 100vh;
+    position: relative;
+  }
+  *::-webkit-scrollbar {
+    display: none;
+  }
 
-a.active {
-  border-bottom: 2px solid rgb(var(--border01));
+  a.active {
+    border-bottom: 2px solid rgb(var(--border01));
+  }
 }
